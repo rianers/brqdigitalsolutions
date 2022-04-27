@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DataProvider
+﻿namespace DataProvider
 {
-    internal class Context
+    public class Context
     {
     }
 }

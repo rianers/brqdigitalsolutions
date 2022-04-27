@@ -1,83 +1,42 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace brq.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class Search : Controller
     {
-        // GET: Search
-        public ActionResult Index()
+
+        [HttpGet("id")]
+        public async Task<ActionResult> GetById(string id)
         {
-            return View();
+            return Ok();
         }
 
-        // GET: Search/Details/5
-        public ActionResult Details(int id)
+        [HttpGet("name")]
+        public async Task<ActionResult> GetByName(string name)
         {
-            return View();
+            return Ok();
         }
-
-        // GET: Search/Create
-        public ActionResult Create()
+        [HttpGet("email")]
+        public async Task<ActionResult> GetByEmail(string email)
         {
-            return View();
+            return Ok();
         }
-
-        // POST: Search/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        [HttpGet("cpf")]
+        public async Task<ActionResult> GetByCPF(string cpf)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            return Ok();
         }
-
-        // GET: Search/Edit/5
-        public ActionResult Edit(int id)
+        [HttpGet("skill")]
+        public async Task<ActionResult> GetAllBySkill(string skill)
         {
-            return View();
+            return Ok();
         }
-
-        // POST: Search/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        [HttpGet("certification")]
+        public async Task<ActionResult> GetAllByCertification()
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Search/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Search/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            return Ok();
         }
     }
 }
