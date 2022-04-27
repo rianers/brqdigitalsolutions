@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32319.34
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "brq", "brq\brq.csproj", "{3E0D8EAE-4EC5-4A1D-B859-896810072249}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrqDigitalSolutions", "brq\BrqDigitalSolutions.csproj", "{3E0D8EAE-4EC5-4A1D-B859-896810072249}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataProvider", "DataProvider\DataProvider.csproj", "{69E91000-DB03-44A3-B7FB-F9503F61543A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataProvider", "DataProvider\DataProvider.csproj", "{69E91000-DB03-44A3-B7FB-F9503F61543A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{6CC20355-5885-4C78-A968-9BDBCDE90556}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{6CC20355-5885-4C78-A968-9BDBCDE90556}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{87CAF1C8-D4EB-4A30-87F9-033D4D0A6DEE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "UnitTests\UnitTests.csproj", "{87CAF1C8-D4EB-4A30-87F9-033D4D0A6DEE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTests", "IntegrationTests\IntegrationTests.csproj", "{368130EC-72FD-4EF1-9C00-2DD92A64E45A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IntegrationTests", "IntegrationTests\IntegrationTests.csproj", "{368130EC-72FD-4EF1-9C00-2DD92A64E45A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
