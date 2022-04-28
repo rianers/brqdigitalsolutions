@@ -1,9 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 
 using Models;
-using Context;
-using DTOs;
 using DataProvider;
+using Application.DTOs;
 
 namespace Controllers;
 
@@ -15,9 +14,9 @@ public class CandidatesController : ControllerBase
     public CandidatesController(BaseContext ctx) => _context = ctx;
 
     [HttpGet(Name = "/")]
-    public IEnumerable<Candidate> Index(/*name, email, cpf, skills, certifications*/)
+    public IEnumerable<Candidate> Index()
     {
-        //return _context.Candidates.Where(name, email, cpf, skills, certifications).ToList();
+        return _context.Candidates.ToList();
     }
 
     [HttpPost(Name = "/")]
