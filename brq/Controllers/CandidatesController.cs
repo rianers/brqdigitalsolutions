@@ -14,9 +14,36 @@ public class CandidatesController : ControllerBase
     public CandidatesController(BaseContext ctx) => _context = ctx;
 
     [HttpGet(Name = "/")]
-    public IEnumerable<Candidate> Index()
+    public IEnumerable<Candidate> Index([FromQuery] QueryListCandidateDTO query)
     {
-        return _context.Candidates.ToList();
+        var candidates = _context.Candidates.AsQueryable();
+
+        if (query.Name != null)
+        {
+            candidates = candidates.Where(c => c.Name.Contains(query.Name));
+        }
+
+        if (query.Email != null)
+        {
+            candidates = candidates.Where(c => c.Email.Contains(query.Email));
+        }
+
+        if (query.CPF != null)
+        {
+            candidates = candidates.Where(c => c.CPF.Contains(query.CPF));
+        }
+
+        if (query.Skills != null)
+        {
+            candidates = candidates.Where(c => c.Skills.Where(s => query.Skills.Contains(s.Skill.Name)).Count() > 0);
+        }
+
+        if (query.Certifications != null)
+        {
+            candidates = candidates.Where(c => c.Certifications.Any(s => query.Certifications.Contains(s.Name)));
+        }
+
+        return candidates.ToList();
     }
 
     [HttpPost(Name = "/")]
@@ -53,12 +80,13 @@ public class CandidatesController : ControllerBase
         }
 
         return Ok(item);
-    }
+    }  
+    
 
     [HttpPut("{id}", Name = "/{id}")]
-    public IActionResult Update(int id, [FromBody] Candidate item)
+    public IActionResult Update(int id, [FromBody] CandidateDTO item)
     {
-        if (item == null || item.Id != id)
+        if (item == null)
         {
             return BadRequest();
         }
