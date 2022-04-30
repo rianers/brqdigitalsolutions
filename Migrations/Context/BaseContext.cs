@@ -1,13 +1,13 @@
-﻿using DataProvider.DataModels;
+using DataProvider.DataModels;
 using Microsoft.EntityFrameworkCore;
 
-namespace DataProvider
+namespace Migrations.Context
 {
     public class BaseContext : DbContext
     {
-        public BaseContext(DbContextOptions<BaseContext> options) : base(options)
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+            optionsBuilder.UseNpgsql("Host=34.236.8.155;Database=brq_challenger;Username=postgres;Password=admin_fiap_pgsql");
         }
 
         public DbSet<Candidate> Candidates { get; set; } = default!;
@@ -17,27 +17,6 @@ namespace DataProvider
         public DbSet<CandidateSkill> CandidateSkills { get; set; } = default!;
 
         public DbSet<Certification> Certifications { get; set; } = default!;
-
-        public override int SaveChanges()
-        {
-            var entries = ChangeTracker
-                .Entries()
-                .Where(e => e.Entity is Timestamp && (
-                        e.State == EntityState.Added
-                        || e.State == EntityState.Modified));
-
-            foreach (var entityEntry in entries)
-            {
-                ((Timestamp)entityEntry.Entity).UpdatedAt = DateTime.Now;
-
-                if (entityEntry.State == EntityState.Added)
-                {
-                    ((Timestamp)entityEntry.Entity).CreatedAt = DateTime.Now;
-                }
-            }
-
-            return base.SaveChanges();
-        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

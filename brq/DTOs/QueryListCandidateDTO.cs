@@ -1,5 +1,5 @@
 
-namespace Application.DTOs
+namespace BrqDigitalSolutions.DTOs
 {
     public class QueryListCandidateDTO
     {

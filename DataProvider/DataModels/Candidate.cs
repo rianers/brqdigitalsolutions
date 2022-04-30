@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Models
+namespace DataProvider.DataModels
 {
     [Table("candidates")]
     public class Candidate : Timestamp

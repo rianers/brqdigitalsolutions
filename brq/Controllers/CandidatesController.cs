@@ -1,8 +1,7 @@
-using Microsoft.AspNetCore.Mvc;
-
-using Models;
+using BrqDigitalSolutions.DTOs;
 using DataProvider;
-using Application.DTOs;
+using DataProvider.DataModels;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Controllers;
 
@@ -58,7 +57,7 @@ public class CandidatesController : ControllerBase
             Name = item.Name,
             Email = item.Email,
             Phone = item.Phone,
-            CPF = item.CPF,
+            CPF = item.CPF
         };
 
         // var skills = _context.Skills.Where(s => item.Skills.Contains(s.Name)).ToList().AsEnumerable();
@@ -80,8 +79,8 @@ public class CandidatesController : ControllerBase
         }
 
         return Ok(item);
-    }  
-    
+    }
+
 
     [HttpPut("{id}", Name = "/{id}")]
     public IActionResult Update(int id, [FromBody] CandidateDTO item)
