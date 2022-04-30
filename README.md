@@ -1,11 +1,12 @@
 <h1> BRQ Digital Solution </h1>
 API Restful criada para cadastro de candidatos para processos seletivos dentro da BRQ, onde são enviadas requisições HTTP para cadastro, atualização e pesquisas.
 
-No sistema há 3 endpoints divididos em: 
+No sistema há 4 endpoints divididos em: 
 
 <h3> Candidato </h3>
 <ul>
   <li>Get</li> Retorna o cadastro de determinado candidato, permitindo também a busca por candidatos por campo-chave (Nome, Email, CPF, Skills e Certificações).
+  <li>GetById</li> Retorna o cadastro de determinado candidato pelo seu ID.
   <li>Post</li> Cadastra um candidato. 
   <li>Update</li> Atualiza o cadastro de um candidato.
 </ul>
