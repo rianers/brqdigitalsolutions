@@ -11,7 +11,7 @@ No sistema há 3 endpoints divididos em:
 </ul>
 </br>
 Para verificar a documentação da utilização dessas API'S, complete o tópico de <a href="#instalacao"> 🔧 Instalação </a>. O Swagger informará os parâmetros e rotas necessárias.
-<img src="apibrq.png"></img>
+<img src="https://media.discordapp.net/attachments/908865516016390156/969784991812841482/unknown.png?width=1020&height=347"></img>
 
 <h1> 🚀 Começando </h1>
 Essas instruções permitirão que você obtenha uma cópia do projeto na sua máquina local para fins de desenvolvimento e teste.
