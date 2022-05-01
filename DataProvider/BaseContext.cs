@@ -46,23 +46,14 @@ namespace DataProvider
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
       modelBuilder.Entity<Candidate>()
-              .HasMany<Skill>(c => c.Skills)
-              .WithMany(s => s.Candidates);
-      modelBuilder.Entity<Candidate>()
-             .Map(cs =>
-             {
-               cs.MapLeftKey("candidate_id");
-               cs.MapRightKey("skill_id");
-               cs.ToTable("candidate_skills");
-             });
-      // modelBuilder.Entity<CandidateSkill>()
-      //     .HasOne(bc => bc.Candidate)
-      //     .WithMany(b => b.Skills)
-      //     .HasForeignKey(bc => bc.CandidateId);
-      // modelBuilder.Entity<CandidateSkill>()
-      //     .HasOne(bc => bc.Skill)
-      //     .WithMany(c => c.Candidates)
-      //     .HasForeignKey(bc => bc.SkillId);
+          .HasMany<Skill>(c => c.Skills)
+          .WithMany(s => s.Candidates)
+          .Map(cs =>
+          {
+            cs.MapLeftKey("candidate_id");
+            cs.MapRightKey("skill_id");
+            cs.ToTable("candidate_skills");
+          });
     }
   }
 }

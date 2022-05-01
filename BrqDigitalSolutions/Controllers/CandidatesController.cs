@@ -27,7 +27,7 @@ public class CandidatesController : ControllerBase
       candidates = candidates.Where(c => c.CPF.Contains(query.CPF));
 
     if (query.Skills is not null)
-      candidates = candidates.Where(c => c.Skills.Where(s => query.Skills.Contains(s.Skill.Name)).Count() > 0);
+      candidates = candidates.Where(c => c.Skills.Where(s => query.Skills.Contains(s.Name)).Count() > 0);
 
     if (query.Certifications is not null)
       candidates = candidates.Where(c => c.Certifications.Any(s => query.Certifications.Contains(s.Name)));
