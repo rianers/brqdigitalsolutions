@@ -10,11 +10,15 @@ namespace DataProvider
       AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
     }
 
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+      optionsBuilder.UseNpgsql("Host=34.236.8.155;Database=brq_challenger;Username=postgres;Password=admin_fiap_pgsql");
+      AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+    }
+
     public DbSet<Candidate> Candidates { get; set; } = default!;
 
     public DbSet<Skill> Skills { get; set; } = default!;
-
-    public DbSet<CandidateSkill> CandidateSkills { get; set; } = default!;
 
     public DbSet<Certification> Certifications { get; set; } = default!;
 
@@ -41,16 +45,24 @@ namespace DataProvider
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-      modelBuilder.Entity<CandidateSkill>()
-              .HasKey(bc => new { bc.CandidateId, bc.SkillId });
-      modelBuilder.Entity<CandidateSkill>()
-          .HasOne(bc => bc.Candidate)
-          .WithMany(b => b.Skills)
-          .HasForeignKey(bc => bc.CandidateId);
-      modelBuilder.Entity<CandidateSkill>()
-          .HasOne(bc => bc.Skill)
-          .WithMany(c => c.Candidates)
-          .HasForeignKey(bc => bc.SkillId);
+      modelBuilder.Entity<Candidate>()
+              .HasMany<Skill>(c => c.Skills)
+              .WithMany(s => s.Candidates);
+      modelBuilder.Entity<Candidate>()
+             .Map(cs =>
+             {
+               cs.MapLeftKey("candidate_id");
+               cs.MapRightKey("skill_id");
+               cs.ToTable("candidate_skills");
+             });
+      // modelBuilder.Entity<CandidateSkill>()
+      //     .HasOne(bc => bc.Candidate)
+      //     .WithMany(b => b.Skills)
+      //     .HasForeignKey(bc => bc.CandidateId);
+      // modelBuilder.Entity<CandidateSkill>()
+      //     .HasOne(bc => bc.Skill)
+      //     .WithMany(c => c.Candidates)
+      //     .HasForeignKey(bc => bc.SkillId);
     }
   }
 }

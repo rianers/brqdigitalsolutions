@@ -14,6 +14,6 @@ namespace DataProvider.DataModels
         [Column("name")]
         public string Name { get; set; } = default!;
 
-        public ICollection<CandidateSkill> Candidates { get; set; } = default!;
+        public ICollection<Candidate> Candidates { get; set; } = default!;
     }
 }

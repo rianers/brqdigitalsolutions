@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
-namespace Application.DTOs
+namespace BrqDigitalSolutions.DTOs
 {
   public record CandidateDTO
   {

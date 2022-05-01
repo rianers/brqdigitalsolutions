@@ -13,7 +13,7 @@ public class CandidatesController : ControllerBase
   public CandidatesController(BaseContext ctx) => _context = ctx;
 
   [HttpGet(Name = "/")]
-  public IEnumerable<CandidateListResponseDTO> Index([FromQuery] QueryListCandidateDTO query)
+  public IEnumerable<Candidate> Index([FromQuery] QueryListCandidateDTO query)
   {
     var candidates = _context.Candidates.AsQueryable();
 
@@ -32,16 +32,7 @@ public class CandidatesController : ControllerBase
     if (query.Certifications is not null)
       candidates = candidates.Where(c => c.Certifications.Any(s => query.Certifications.Contains(s.Name)));
 
-    return candidates.ToList().Select(c => new CandidateListResponseDTO
-    {
-      Id = c.Id,
-      Name = c.Name,
-      Email = c.Email,
-      Phone = c.Phone,
-      CPF = c.CPF,
-      Skills = c.Skills.Select(s => new CandidateSkillDTO { Id = s.Id, Name = s.Skill.Name }),
-      Certifications = c.Certifications.Select(s => new CandidateCertificationDTO { Id = s.Id, Name = s.Name })
-    });
+    return candidates.ToList();
   }
 
   [HttpPost(Name = "/")]
@@ -79,7 +70,6 @@ public class CandidatesController : ControllerBase
 
     return Ok(item);
   }
-
 
   [HttpPut("{id}", Name = "/{id}")]
   public IActionResult Update(int id, [FromBody] CandidateDTO item)

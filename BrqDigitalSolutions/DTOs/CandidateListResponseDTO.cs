@@ -1,4 +1,4 @@
-namespace Application.DTOs
+namespace BrqDigitalSolutions.DTOs
 {
   public record CandidateSkillDTO
   {
