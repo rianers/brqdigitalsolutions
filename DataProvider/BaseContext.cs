@@ -1,5 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Models;
+﻿using DataProvider.DataModels;
+using Microsoft.EntityFrameworkCore;
+
 namespace DataProvider
 {
   public class BaseContext : DbContext

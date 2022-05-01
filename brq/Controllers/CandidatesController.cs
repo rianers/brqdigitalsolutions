@@ -1,8 +1,7 @@
-using Microsoft.AspNetCore.Mvc;
-
-using Models;
+using BrqDigitalSolutions.DTOs;
 using DataProvider;
-using Application.DTOs;
+using DataProvider.DataModels;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Controllers;
 
@@ -57,20 +56,12 @@ public class CandidatesController : ControllerBase
       Name = item.Name,
       Email = item.Email,
       Phone = item.Phone,
-      CPF = item.CPF,
+      CPF = item.CPF
     };
 
-    var skills = _context.Skills.Where(s => item.Skills.Contains(s.Name)).ToList();
+    // var skills = _context.Skills.Where(s => item.Skills.Contains(s.Name)).ToList().AsEnumerable();
 
-    foreach (var i in skills)
-    {
-      candidate.Skills.Add(new CandidateSkill { Skill = i });
-    }
-
-    foreach (var certification in item.Certifications)
-    {
-      // candidate.Certifications.Add(new Certification { Name = certification });
-    }
+    // candidate.Skills = skills;
 
     _context.Candidates.Add(candidate);
     _context.SaveChanges();
