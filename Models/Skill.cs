@@ -14,6 +14,6 @@ namespace Models
     [Column("name")]
     public string Name { get; set; } = default!;
 
-    public ICollection<CandidateSkill> Candidates { get; set; } = default!;
+    public virtual ICollection<CandidateSkill> Candidates { get; set; } = default!;
   }
 }
