@@ -2,6 +2,7 @@ using BrqDigitalSolutions.DBContext;
 using BrqDigitalSolutions.DTOs;
 using BrqDigitalSolutions.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Controllers;
 
@@ -97,7 +98,11 @@ public class CandidatesController : ControllerBase
   [HttpGet("{id}")]
   public ActionResult<CandidateResponseDTO> Show(int id)
   {
-    var candidate = _context.Candidates.Find(id);
+    var candidate = _context.Candidates.Include(
+      c => c.Skills
+    ).Include(
+      c => c.Certifications
+    ).FirstOrDefault(c => c.Id == id);
     if (candidate == null)
     {
       return NotFound();
