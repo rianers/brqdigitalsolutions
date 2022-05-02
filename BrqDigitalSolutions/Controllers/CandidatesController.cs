@@ -16,7 +16,12 @@ public class CandidatesController : ControllerBase
   [HttpGet]
   public IEnumerable<CandidateResponseDTO> Index([FromQuery] QueryListCandidateDTO query)
   {
-    var candidates = _context.Candidates.AsQueryable();
+    var candidates = _context.Candidates.Include(
+      c => c.Skills
+    ).ThenInclude(s => s.Skill)
+    .Include(
+      c => c.Certifications
+    ).AsQueryable();
 
     if (query.Name is not null)
       candidates = candidates.Where(c => c.Name.ToLower().Contains(query.Name.ToLower()));
@@ -129,7 +134,12 @@ public class CandidatesController : ControllerBase
     {
       return BadRequest();
     }
-    var candidate = _context.Candidates.Find(id);
+    var candidate = _context.Candidates.Include(
+      c => c.Skills
+    ).ThenInclude(s => s.Skill)
+    .Include(
+      c => c.Certifications
+    ).FirstOrDefault(c => c.Id == id);
     if (candidate == null)
     {
       return NotFound();
