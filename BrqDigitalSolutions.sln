@@ -5,8 +5,6 @@ VisualStudioVersion = 17.1.32319.34
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrqDigitalSolutions", "BrqDigitalSolutions\BrqDigitalSolutions.csproj", "{3E0D8EAE-4EC5-4A1D-B859-896810072249}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataProvider", "DataProvider\DataProvider.csproj", "{69E91000-DB03-44A3-B7FB-F9503F61543A}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,10 +15,6 @@ Global
 		{3E0D8EAE-4EC5-4A1D-B859-896810072249}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E0D8EAE-4EC5-4A1D-B859-896810072249}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E0D8EAE-4EC5-4A1D-B859-896810072249}.Release|Any CPU.Build.0 = Release|Any CPU
-		{69E91000-DB03-44A3-B7FB-F9503F61543A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{69E91000-DB03-44A3-B7FB-F9503F61543A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{69E91000-DB03-44A3-B7FB-F9503F61543A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{69E91000-DB03-44A3-B7FB-F9503F61543A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
