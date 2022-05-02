@@ -100,7 +100,8 @@ public class CandidatesController : ControllerBase
   {
     var candidate = _context.Candidates.Include(
       c => c.Skills
-    ).Include(
+    ).ThenInclude(s => s.Skill)
+    .Include(
       c => c.Certifications
     ).FirstOrDefault(c => c.Id == id);
     if (candidate == null)
